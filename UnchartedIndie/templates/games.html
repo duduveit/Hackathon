@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div class="container mt-5 d-flex justify-content-center">
+        <h1>Lista de jogos</h1>
+    </div>
+
+
+<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+    {% for jogos in lista_jogos %}
+    <div class="container mt-5 mb-5 d-flex justify-content-center" >
+        <div class="card p-3">
+            <div class="d-flex align-items-center">
+                <div class="image pe-2"> <img src="{{ jogos.foto_jogo }}" class="rounded" width="200" height="200" > </div>
+                <div class="ml-3 w-100">
+                    <h1 class="mb-0 mt-0 ">{{ jogos.nome_jogo }}
+                    </h1> <span>{{ jogos.desenvolvedora }}</span>
+                    <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                        <div class="d-flex flex-column"> <span class="articles">Nota do jogo</span> <span class="number1">{{ jogos.nota_final }}</span> </div><br>
+                        <div class="d-flex flex-column"> <span class="rating">Ano de lançamento</span> <span class="number3">{{ jogos.ano_lanc }}</span> </div>
+                    </div>
+                </div>
+                <div class="button mt-2 d-flex flex-row align-items-center btn-lg">
+                    <a class="w-100" href="{{ url_for('review', jogo_id = jogos.id) }}" >
+                        <button class="btn btn-sm btn-outline-primary w-100">Acessar jogo</button>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    {% endfor %}
+
+</div>
+
+
+
+
+{% endblock %}

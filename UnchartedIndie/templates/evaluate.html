@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        <h1>{{ Avaliar }}</h1>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <form method = "POST" action="" class = "border p-4 mt-2" >
+
+                    <legend>Nova avaliação</legend>
+                    <fieldset>
+                        <div class = "fora_group">
+                            {{ form.corpo.label(class = "form-control-label") }}
+                            {% if form.corpo.errors %}
+                                {{ form.corpo(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.corpo.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.corpo(class = "form-control") }}
+                            {% endif %}
+                        </div>
+                        
+                        <div class = "fora_group">
+                            {{ form.nota.label(class = "form-control-label") }}
+                            {% if form.nota.errors %}
+                                {{ form.nota(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.nota.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.nota(class = "form-control") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    {{ form.enviar_avaliacao(class = "btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+{% endblock %}

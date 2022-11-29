@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container mt-5 d-flex justify-content-center">
+   <h1 class="mb-0 mt-0 ">{{ jogo.nome_jogo }} </h1>
+</div>
+
+<div class="container mt-5 d-flex justify-content-between">
+   <div class="image pe-2"> <img src="{{ jogo.foto_jogo }}" width="220" height="220" > </div>
+   <div class="container mt-2">
+      <h5 class="mb-0 mt-0 pl-2"> {{ jogo.sinopse }} </h5>
+   </div>
+   <ul>
+      <div class="d-flex flex-column"> <span class="articles">Desenvolvedora</span> <span class="number1">{{ jogo.desenvolvedora }}</span> </div>
+      <div class="d-flex flex-column"> <span class="rating">Ano de lançamento</span> <span class="number3">{{ jogo.ano_lanc }}</span> </div>
+      <div class="d-flex flex-column"> <span class="rating">Categoria</span> <span class="number3">{{ jogo.categoria }}</span> </div>
+      <div class="d-flex flex-column"> <span class="rating">Preço Steam</span> <span class="number3">R$ {{ jogo.preco }},00</span> </div>
+   </ul>
+</div>
+
+{% if jogo.nota_final<=35 %}
+   <div class="container">
+      <button type="button" class="btn btn-danger number4">
+         <span class="badge badge-light color"> {{ jogo.nota_final }}</span>
+      </button>
+   </div>
+    {% elif jogo.nota_final<=70 %}
+   <div class="container">
+      <button type="button" class="btn btn-warning number4">
+         <span class="badge badge-light color"> {{ jogo.nota_final }}</span>
+      </button>
+   </div>
+    {% else %}
+   <div class="container">
+      <button type="button" class="btn btn-success number4">
+         <span class="badge badge-light color"> {{ jogo.nota_final }}</span>
+      </button>
+   </div>
+{% endif %}
+
+<div class="container mt-5 d-flex justify-content-center">
+   <h1> Trailer do jogo </h1><br>
+</div>
+
+<div class="container mt-5 d-flex justify-content-center">
+   <iframe width="420" height="315"
+           src=" {{ jogo.trailer  }}">
+   </iframe>
+
+</div>
+
+<div class="container mt-5 d-flex justify-content-center">
+   <h1> Avaliações </h1><br>
+</div>
+
+<div class="button mt-2 d-flex flex-row align-items-center btn-lg">
+                    <a class="w-100" href="{{ url_for('evaluate', jogo_id = jogo.id) }}" >
+                        <button class="btn btn-sm btn-outline-primary w-100">Avaliar jogo</button>
+                    </a>
+</div>
+
+
+{% for avaliacao in avaliacoes %}
+    <div class="mt-4 mb-4 d-flex container stats" >
+            <div class="d-flex row  ">
+                <div class="col col-3">
+                  <div class="image pe-2"> <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(avaliacao.criador.foto_perfil)) }}" class="rounded" width="200"> </div>
+                </div>
+                <div class="col col-5">
+                  <ul>
+                      <div class="d-flex flex-column number5 "> <span>{{ avaliacao.criador.nome }}</span> </div><br>
+                        {% if avaliacao.nota<=35 %}
+                           <div class="container">
+                              <button type="button" class="btn btn-danger number6">
+                                 <span class="badge badge-light color"> {{ avaliacao.nota }}</span>
+                              </button>
+                           </div>
+                            {% elif avaliacao.nota<=70 %}
+                               <div class="container">
+                                  <button type="button" class="btn btn-warning number6">
+                                     <span class="badge badge-light color"> {{ avaliacao.nota }}</span>
+                                  </button>
+                               </div>
+                            {% else %}
+                               <div class="container">
+                                  <button type="button" class="btn btn-success number6">
+                                     <span class="badge badge-light color"> {{ avaliacao.nota }}</span>
+                                  </button>
+                               </div>
+                        {% endif %}
+                   </ul>
+                </div>
+                <div class="col col-9">
+                    <p align = justify class="ml-5 pl-5 number7"> {{ avaliacao.corpo }} </p>
+                </div>
+
+
+            </div>
+    </div>
+    <hr>
+
+{% endfor %}
+
+<footer class="text-align-left mt-5" style="background-color: #20c997;">
+<div class = "container">
+    <h1> Contato </h1><hr>
+</div>
+<div class = "container">
+    <p>Endereço:  Rua Prefeito Gabriel José Antônio 74, Vila das Palmeiras, Guarulhos, SP, Cep: 07024-120 </p>
+    <p>Telefone: (11) 95415-4512</p>
+    <p>CNPJ: 72.968.223/0001-58</p>
+    <p>Uncharted Games</p>
+    <br>
+</div>
+</footer>
+
+{% endblock %}

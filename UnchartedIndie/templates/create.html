@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container" xmlns="http://www.w3.org/1999/html">
+        <h1>Criar jogo</h1>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <form method = "POST" action="" class = "border p-4 mt-2" >
+
+                    <legend>Criar Jogo</legend>
+                    <fieldset>
+
+                        <div class = "fora_group">
+                            {{ form.nome.label(class = "form-control-label") }}
+                            {% if form.nome.errors %}
+                                {{ form.nome(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.nome.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.nome(class = "form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class = "fora_group">
+                            {{ form.ano_lancamento.label(class = "form-control-label") }}
+                            {% if form.nome.errors %}
+                                {{ form.ano_lancamento(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.ano_lancamento.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.ano_lancamento(class = "form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class = "fora_group">
+                            {{ form.desenvolvedora.label(class = "form-control-label") }}
+                            {% if form.desenvolvedora.errors %}
+                                {{ form.desenvolvedora(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.desenvolvedora.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.desenvolvedora(class = "form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class = "fora_group">
+                            {{ form.preco.label(class = "form-control-label") }}
+                            {% if form.preco.errors %}
+                                {{ form.preco(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.preco.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.preco(class = "form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class = "fora_group">
+                            {{ form.sinopse.label(class = "form-control-label") }}
+                            {% if form.sinopse.errors %}
+                                {{ form.sinopse(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.sinopse.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.sinopse(class = "form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class = "fora_group">
+                            {{ form.categoria.label(class = "form-control-label") }}
+                            {% if form.categoria.errors %}
+                                {{ form.categoria(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.categoria.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.categoria(class = "form-control") }}
+                            {% endif %}
+                        </div>
+
+                        <div class = "fora_group">
+                            {{ form.trailer.label(class = "form-control-label") }}
+                            {% if form.trailer.errors %}
+                                {{ form.trailer(class = "form-control is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for erro in form.trailer.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.trailer(class = "form-control") }}
+                            {% endif %}
+                        </div>
+                        
+
+                    </fieldset>
+                    {{ form.enviar_jogo(class = "btn btn-primary mt-2") }}
+                </form>
+            </div>
+        </div>
+</div>
+
+<footer class="text-align-left mt-5" style="background-color: #20c997;">
+<div class = "container">
+    <h1> Contato </h1><hr>
+</div>
+<div class = "container">
+    <p>Endereço:  Rua Prefeito Gabriel José Antônio 74, Vila das Palmeiras, Guarulhos, SP, Cep: 07024-120 </p>
+    <p>Telefone: (11) 95415-4512</p>
+    <p>CNPJ: 72.968.223/0001-58</p>
+    <p>Uncharted Games</p>
+    <br>
+</div>
+</footer>
+{% endblock %}

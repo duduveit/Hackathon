@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+
+<div class="container mt-5 d-flex justify-content-center">
+   <h1> Minhas Avaliações </h1><br>
+</div>
+
+{% for avaliacao in avaliacoes %}
+    <div class="mt-4 mb-4 d-flex container stats" >
+            <div class="d-flex row align-items-center">
+                <div class="col-3">
+                  <div class="image pe-2"> <img src="{{ avaliacao.jogo.foto_jogo }}" class="rounded" width="200" height="200" > </div>
+                </div>
+                <div class="col-9">
+                  <ul>
+                      <div class="d-flex flex-column number5 "> <span>{{ avaliacao.criador.nome }}</span> </div><br>
+                        {% if avaliacao.nota<=35 %}
+                           <div class="container">
+                              <button type="button" class="btn btn-danger number6">
+                                 <span class="badge badge-light color"> {{ avaliacao.nota }}</span>
+                              </button>
+                           </div>
+                            {% elif avaliacao.nota<=70 %}
+                               <div class="container">
+                                  <button type="button" class="btn btn-warning number6">
+                                     <span class="badge badge-light color"> {{ avaliacao.nota }}</span>
+                                  </button>
+                               </div>
+                            {% else %}
+                               <div class="container">
+                                  <button type="button" class="btn btn-success number6">
+                                     <span class="badge badge-light color"> {{ avaliacao.nota }}</span>
+                                  </button>
+                               </div>
+                        {% endif %}
+                   </ul>
+                </div>
+                <p align=justify>
+                  <p align = justify class="ml-5 pl-5 number7"> {{ avaliacao.corpo }} </p>
+                </p>
+            </div>
+    </div>
+
+    <div class="button mt-2 d-flex flex-row align-items-center btn-lg">
+    <a class="w-100" href="{{ url_for('exibir_avaliacao', avaliacao_id=avaliacao.id) }}">
+        <button class="btn btn-sm btn-outline-primary w-100">Editar avaliação</button>
+    </a>
+    </div>
+
+        <button class="btn btn-sm btn-outline-primary w-100">
+            <a href='#' data-bs-toggle="modal" class="text-danger" data-bs-target="#exampleModal">Deletar avaliação</a>
+        </button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir avaliação</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Confirmar a exclusão da avaliação?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <form method="POST" action="{{ url_for('excluir_avaliacao', avaliacao_id=avaliacao.id) }}">
+              <button type="submit" class="btn btn-danger">Confimar</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <hr>
+{% endfor %}
+
+
+
+{% endblock %}
