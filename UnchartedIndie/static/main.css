@@ -1,0 +1,85 @@
+.card {
+    width: 600px;
+    border: solid;
+    border-radius: 15px;
+    background-color: #fff
+}
+
+.gamecard {
+    width: 1000px;
+    height: 400px;
+    border: none;
+    border-radius: 15px;
+    background-color: #fff
+}
+
+.stats {
+    background: #f2f5f8 !important;
+    color: #000 !important
+}
+
+.stats1 {
+    background: #f2f5f8 !important;
+    color: #20c997 !important
+}
+
+.articles {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number1 {
+    font-weight: 500
+}
+
+.followers {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number2 {
+    font-weight: 500
+}
+
+.rating {
+    font-size: 10px;
+    color: #a1aab9
+}
+
+.number3 {
+    font-weight: 500
+}
+
+.number4 {
+    font-weight: 850;
+    padding: 12px 72.5px;
+}
+
+.color {
+    font-size: 30px;
+    color: #a1aab9
+}
+
+.header-content {
+  position: absolute;
+  bottom: 0;
+}
+
+.number5
+{
+    font-size: 30px;
+    font-weight: 500
+    padding: 12px 72.5px;
+}
+
+.number6 {
+    font-weight: 850;
+    width: 125px;
+}
+
+.number7
+{
+    font-size: 22px;
+    font-weight: 500
+    padding: 12px 72.5px;
+}
